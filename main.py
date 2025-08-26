@@ -227,12 +227,12 @@ def start_frp():
 
     notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
 
-# if __name__ == "__main__":
-#     start_frp()
+if __name__ == "__main__":
+    start_frp()
     
-#     print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
-#     if args.disable_trigger_vercel_deploy is None:
-#         trigger_vercel_deploy()
+    print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
+    if args.disable_trigger_vercel_deploy is None:
+        trigger_vercel_deploy()
 if __name__ == "__main__":
     if args.default_device is not None:
         default_dev = args.default_device
