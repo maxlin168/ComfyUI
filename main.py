@@ -226,7 +226,7 @@ def start_frp():
         subprocess.Popen(['/kaggle/working/frpc', '-c', '/kaggle/working/frpc.toml'], stdout=log_file, stderr=subprocess.STDOUT, start_new_session=True)
     # print(f'frp已经启动')
 
-    notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
+    # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
 
 if __name__ == "__main__":
     start_frp()
