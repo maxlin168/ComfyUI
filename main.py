@@ -15,19 +15,7 @@ import sys
 import notion
 import requests
 
-
-if __name__ == "__main__":
-    import signal
-    import sys
-
-    def sigterm_handler(_signo, _stack_frame):
-        logging.info("Kaggle session terminated. Shutting down gracefully.")
-        sys.exit(0)
-
-    signal.signal(signal.SIGTERM, sigterm_handler)
-    #NOTE: These do not do anything on core ComfyUI, they are for custom nodes.
-    os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
-    os.environ['DO_NOT_TRACK'] = '1'
+import cuda_malloc
 
 setup_logger(log_level=args.verbose, use_stdout=args.log_stdout)
 
@@ -70,10 +58,6 @@ from comfy_execution.progress import get_progress_state
 from comfy_execution.utils import get_executing_context
 from comfy_api import feature_flags
 
-if __name__ == "__main__":
-    #NOTE: These do not do anything on core ComfyUI, they are for custom nodes.
-    os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
-    os.environ['DO_NOT_TRACK'] = '1'
 
 setup_logger(log_level=args.verbose, use_stdout=args.log_stdout)
 
@@ -228,36 +212,6 @@ def start_frp():
 
     notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
 
-if __name__ == "__main__":
-    start_frp()
-    
-    print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
-    if args.disable_trigger_vercel_deploy is None:
-        trigger_vercel_deploy()
-if __name__ == "__main__":
-    if args.default_device is not None:
-        default_dev = args.default_device
-        devices = list(range(32))
-        devices.remove(default_dev)
-        devices.insert(0, default_dev)
-        devices = ','.join(map(str, devices))
-        os.environ['CUDA_VISIBLE_DEVICES'] = str(devices)
-        os.environ['HIP_VISIBLE_DEVICES'] = str(devices)
-
-    if args.cuda_device is not None:
-        os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda_device)
-        os.environ['HIP_VISIBLE_DEVICES'] = str(args.cuda_device)
-        logging.info("Set cuda device to: {}".format(args.cuda_device))
-
-    if args.oneapi_device_selector is not None:
-        os.environ['ONEAPI_DEVICE_SELECTOR'] = args.oneapi_device_selector
-        logging.info("Set oneapi device selector to: {}".format(args.oneapi_device_selector))
-
-    if args.deterministic:
-        if 'CUBLAS_WORKSPACE_CONFIG' not in os.environ:
-            os.environ['CUBLAS_WORKSPACE_CONFIG'] = ":4096:8"
-
-    import cuda_malloc
 
 if 'torch' in sys.modules:
     logging.warning("WARNING: Potential Error in code: Torch already imported, torch should never be imported before this point.")
@@ -471,6 +425,41 @@ def start_comfyui(asyncio_loop=None):
 
 
 if __name__ == "__main__":
+
+
+    #NOTE: These do not do anything on core ComfyUI, they are for custom nodes.
+    os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
+    os.environ['DO_NOT_TRACK'] = '1'
+
+    # start_frp()
+    
+    print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
+    if args.disable_trigger_vercel_deploy is None:
+        trigger_vercel_deploy()
+
+    if args.default_device is not None:
+        default_dev = args.default_device
+        devices = list(range(32))
+        devices.remove(default_dev)
+        devices.insert(0, default_dev)
+        devices = ','.join(map(str, devices))
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(devices)
+        os.environ['HIP_VISIBLE_DEVICES'] = str(devices)
+
+    if args.cuda_device is not None:
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda_device)
+        os.environ['HIP_VISIBLE_DEVICES'] = str(args.cuda_device)
+        logging.info("Set cuda device to: {}".format(args.cuda_device))
+
+    if args.oneapi_device_selector is not None:
+        os.environ['ONEAPI_DEVICE_SELECTOR'] = args.oneapi_device_selector
+        logging.info("Set oneapi device selector to: {}".format(args.oneapi_device_selector))
+
+    if args.deterministic:
+        if 'CUBLAS_WORKSPACE_CONFIG' not in os.environ:
+            os.environ['CUBLAS_WORKSPACE_CONFIG'] = ":4096:8"
+
+
     # Running directly, just start ComfyUI.
     logging.info("Python version: {}".format(sys.version))
     logging.info("ComfyUI version: {}".format(comfyui_version.__version__))
