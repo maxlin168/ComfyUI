@@ -222,7 +222,8 @@ def start_frp():
     subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
     time.sleep(3)
-    subprocess.Popen(['/kaggle/working/frpc', '-c', '/kaggle/working/frpc.toml'])
+    with open('/kaggle/working/frpc.log', 'a') as log_file:
+        subprocess.Popen(['/kaggle/working/frpc', '-c', '/kaggle/working/frpc.toml'], stdout=log_file, stderr=subprocess.STDOUT, start_new_session=True)
     print(f'frp已经启动')
 
     notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
