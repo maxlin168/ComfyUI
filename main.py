@@ -59,43 +59,6 @@ from comfy_execution.utils import get_executing_context
 from comfy_api import feature_flags
 
 
-setup_logger(log_level=args.verbose, use_stdout=args.log_stdout)
-
-def apply_custom_paths():
-    # extra model paths
-    extra_model_paths_config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "extra_model_paths.yaml")
-    if os.path.isfile(extra_model_paths_config_path):
-        utils.extra_config.load_extra_path_config(extra_model_paths_config_path)
-
-    if args.extra_model_paths_config:
-        for config_path in itertools.chain(*args.extra_model_paths_config):
-            utils.extra_config.load_extra_path_config(config_path)
-
-    # --output-directory, --input-directory, --user-directory
-    if args.output_directory:
-        output_dir = os.path.abspath(args.output_directory)
-        logging.info(f"Setting output directory to: {output_dir}")
-        folder_paths.set_output_directory(output_dir)
-
-    # These are the default folders that checkpoints, clip and vae models will be saved to when using CheckpointSave, etc.. nodes
-    folder_paths.add_model_folder_path("checkpoints", os.path.join(folder_paths.get_output_directory(), "checkpoints"))
-    folder_paths.add_model_folder_path("clip", os.path.join(folder_paths.get_output_directory(), "clip"))
-    folder_paths.add_model_folder_path("vae", os.path.join(folder_paths.get_output_directory(), "vae"))
-    folder_paths.add_model_folder_path("diffusion_models",
-                                       os.path.join(folder_paths.get_output_directory(), "diffusion_models"))
-    folder_paths.add_model_folder_path("loras", os.path.join(folder_paths.get_output_directory(), "loras"))
-
-    if args.input_directory:
-        input_dir = os.path.abspath(args.input_directory)
-        logging.info(f"Setting input directory to: {input_dir}")
-        folder_paths.set_input_directory(input_dir)
-
-    if args.user_directory:
-        user_dir = os.path.abspath(args.user_directory)
-        logging.info(f"Setting user directory to: {user_dir}")
-        folder_paths.set_user_directory(user_dir)
-
-
 def execute_prestartup_script():
     if args.disable_all_custom_nodes and len(args.whitelist_custom_nodes) == 0:
         return
@@ -431,7 +394,7 @@ if __name__ == "__main__":
     os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
     os.environ['DO_NOT_TRACK'] = '1'
 
-    # start_frp()
+    start_frp()
     
     print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
     if args.disable_trigger_vercel_deploy is None:
