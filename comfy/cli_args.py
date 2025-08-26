@@ -51,6 +51,7 @@ parser.add_argument("--auto-launch", action="store_true", help="Automatically la
 parser.add_argument("--disable-auto-launch", action="store_true", help="Disable auto launching the browser.")
 parser.add_argument("--disable_trigger_vercel_deploy", default=None, action="store_true", help="Disable vercel deploy.")
 parser.add_argument("--frp_remote_port_idx", type=int, default=None, help="Set remote port idx.")
+parser.add_argument("--notion_token", type=str, default=None, help="Set notion token.")
 
 parser.add_argument("--cuda-device", type=int, default=None, metavar="DEVICE_ID", help="Set the id of the cuda device this instance will use. All other devices will not be visible.")
 parser.add_argument("--default-device", type=int, default=None, metavar="DEFAULT_DEVICE_ID", help="Set the id of the default device, all other devices will stay visible.")
