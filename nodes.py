@@ -1616,7 +1616,7 @@ class SaveImage:
             counter += 1
         
         print(f"saved {len(all_file_paths)} images to {full_output_folder}: {all_file_paths}")
-        return ({"ui": {"images": results}}, all_file_paths)
+        return {"ui": {"images": results}, "result": (all_file_paths,)}
 
 class PreviewImage(SaveImage):
     def __init__(self):
