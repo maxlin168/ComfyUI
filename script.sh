@@ -282,7 +282,11 @@ cd ComfyUI-AdvancedLivePortrait
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
-
+cd custom_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
+cd ComfyUI-Inspire-Pack
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack comfyui-impact-pack
