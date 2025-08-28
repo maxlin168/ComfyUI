@@ -1574,6 +1574,7 @@ class SaveImage:
         }
 
     RETURN_TYPES = ("STRING[]",)
+    RETURN_NAMES = ("saved_filepaths",)
     FUNCTION = "save_images"
 
     OUTPUT_NODE = True
@@ -1613,7 +1614,8 @@ class SaveImage:
                 "type": self.type
             })
             counter += 1
-
+        
+        print(f"saved {len(all_file_paths)} images to {full_output_folder}: {all_file_paths}")
         return ({"ui": {"images": results}}, all_file_paths)
 
 class PreviewImage(SaveImage):
