@@ -1573,7 +1573,7 @@ class SaveImage:
             },
         }
 
-    RETURN_TYPES = ()
+    RETURN_TYPES = ("STRING[]",)
     FUNCTION = "save_images"
 
     OUTPUT_NODE = True
@@ -1585,6 +1585,9 @@ class SaveImage:
         filename_prefix += self.prefix_append
         full_output_folder, filename, counter, subfolder, filename_prefix = folder_paths.get_save_image_path(filename_prefix, self.output_dir, images[0].shape[1], images[0].shape[0])
         results = list()
+
+        all_file_paths = []
+
         for (batch_number, image) in enumerate(images):
             i = 255. * image.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
@@ -1599,7 +1602,11 @@ class SaveImage:
 
             filename_with_batch_num = filename.replace("%batch_num%", str(batch_number))
             file = f"{filename_with_batch_num}_{counter:05}_.png"
-            img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=self.compress_level)
+            full_path = os.path.join(full_output_folder, file)
+            img.save(full_path, pnginfo=metadata, compress_level=self.compress_level)
+
+            all_file_paths.append(full_path)
+
             results.append({
                 "filename": file,
                 "subfolder": subfolder,
@@ -1607,7 +1614,7 @@ class SaveImage:
             })
             counter += 1
 
-        return { "ui": { "images": results } }
+        return ({"ui": {"images": results}}, all_file_paths)
 
 class PreviewImage(SaveImage):
     def __init__(self):
