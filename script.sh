@@ -132,6 +132,13 @@ wget -c https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4
 wget -c https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth -P ./models/upscale_models
 
 ln -s /kaggle/input/clip-vision-h/clip_vision_h.safetensors ./models/clip_vision/clip_vision_h.safetensors
+ln -s /kaggle/input/clip-vit-large-patch14/clip-vit-large-patch14.safetensors ./models/clip_vision/clip-vit-large-patch14.safetensors
+
+mkdir -p ./models/xlabs/ipadapters
+ln -s /kaggle/input/flux-ip-adapter-v2/flux-ip-adapter-v2.safetensors ./models/xlabs/ipadapters/flux-ip-adapter-v2.safetensors
+
+
+wget -c https://huggingface.co/thedeoxen/refcontrol-flux-kontext-reference-pose-lora/resolve/main/refcontrol_pose.safetensors -P ./models/loras
 
 
 
@@ -416,6 +423,12 @@ cd custom_nodes
 git clone https://github.com/ssitu/ComfyUI_roop
 cd ComfyUI_roop
 python install.py
+cd /kaggle/ComfyUI
+
+cd custom_nodes
+git clone https://github.com/XLabs-AI/x-flux-comfyui.git
+cd x-flux-comfyui
+python setup.py
 cd /kaggle/ComfyUI
 
 # cd custom_nodes
