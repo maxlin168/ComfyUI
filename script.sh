@@ -140,6 +140,9 @@ ln -s /kaggle/input/clip-vision-h/clip_vision_h.safetensors ./models/clip_vision
 # Flux ControlNet fp8
 wget -c https://huggingface.co/ABDALLALSWAITI/FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8/resolve/main/diffusion_pytorch_model.safetensors -O ./models/controlnet/flux.1-dev-controlnet-union-pro-2.0-fp8.safetensors
 
+
+# Qwen ControlNet
+wget -c https://huggingface.co/Comfy-Org/Qwen-Image-DiffSynth-ControlNets/resolve/main/split_files/loras/qwen_image_union_diffsynth_lora.safetensors -P ./models/loras
 # ----------------   安装自定义插件节点  ----------------
 
 # 1 ComfyUI-Manager
