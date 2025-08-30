@@ -60,6 +60,14 @@ ln -s /kaggle/input/qwen-image-lightning-8steps-v1-0/Qwen-Image-Lightning-8steps
 ln -s /kaggle/input/flux1-dev-fp8/flux1-dev-fp8.safetensors ./models/diffusion_models/flux1-dev-fp8.safetensors
 ln -s /kaggle/input/flux1-dev-fp8/flux1-dev-fp8.safetensors ./models/checkpoints/flux1-dev-fp8.safetensors
 
+
+ln -s /kaggle/input/sigclip-vision-patch14-384/sigclip_vision_patch14_384.safetensors -P ./models/clip_vision
+
+# https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/blob/main/flux1-redux-dev.safetensors
+mkdir -p ./models/style_models
+ls -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_models/flux1-redux-dev.safetensors
+
+
 # kontext turnaround sheet lora: It won't work well on real human photos
 # wget -c https://huggingface.co/reverentelusarca/kontext-turnaround-sheet-lora-v1/resolve/main/kontext-turnaround-sheet-v1.safetensors -P ./models/loras
 
@@ -80,7 +88,8 @@ wget -c https://huggingface.co/MonsterMMORPG/tools/resolve/main/antelopev2.zip -
 mkdir -p ./models/insightface/models
 unzip ./models/antelopev2.zip -d ./models/insightface/models
 
-# place it in the ComfyUI controlnet directory： -O overrides -P if both are specified.
+# instantid
+#  -O overrides -P if both are specified.
 # wget -c https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors -O ./models/controlnet/instantid-controlnet.safetensors
 ln -s /kaggle/input/diffusion-pytorch-model/diffusion_pytorch_model.safetensors ./models/controlnet/instantid-controlnet.safetensors
 wget -c https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/config.json -P ./models/controlnet
