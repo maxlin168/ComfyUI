@@ -441,9 +441,9 @@ python setup.py
 cd /kaggle/ComfyUI
 
 
-%cd custom_nodes
-!git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
-%cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
+cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/Gourieff/ComfyUI-ReActor.git
