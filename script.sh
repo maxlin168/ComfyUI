@@ -65,7 +65,7 @@ ln -s /kaggle/input/sigclip-vision-patch14-384/sigclip_vision_patch14_384.safete
 
 # https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/blob/main/flux1-redux-dev.safetensors
 mkdir -p ./models/style_models
-ls -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_models/flux1-redux-dev.safetensors
+ln -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_models/flux1-redux-dev.safetensors
 
 
 # kontext turnaround sheet lora: It won't work well on real human photos
