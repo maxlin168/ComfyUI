@@ -214,14 +214,21 @@ pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
 
+cd custom_nodes
+git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+cd ComfyUI-VideoHelperSuite
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
+
+cd custom_nodes
+git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git
+cd ComfyUI-WanVideoWrapper
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
+
+
 # These custom nodes used by workflow VACE ControlNet 1.0 (base).json ------------ start ------------
 
-
-# cd custom_nodes
-# git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
-# cd ComfyUI-VideoHelperSuite
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
