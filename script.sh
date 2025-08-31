@@ -264,11 +264,6 @@ cd /kaggle/ComfyUI
 # cd /kaggle/ComfyUI
 
 # cd custom_nodes
-# git clone https://github.com/pollockjj/ComfyUI-MultiGPU.git
-# cd /kaggle/ComfyUI
-
-
-# cd custom_nodes
 # git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
 # cd ComfyUI_LayerStyle
 # pip install -r requirements.txt -q
@@ -443,6 +438,10 @@ cd /kaggle/ComfyUI
 
 cd custom_nodes
 git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
+cd /kaggle/ComfyUI
+
+cd custom_nodes
+git clone https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
 cd /kaggle/ComfyUI
 
 # cd custom_nodes
