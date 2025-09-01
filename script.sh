@@ -282,11 +282,11 @@ cd /kaggle/ComfyUI
 
 
 # MV-Adapter
-cd custom_nodes
-git clone https://github.com/huanngzh/ComfyUI-MVAdapter.git
-cd ComfyUI-MVAdapter
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/huanngzh/ComfyUI-MVAdapter.git
+# cd ComfyUI-MVAdapter
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
 #cog-consistent-character ??
