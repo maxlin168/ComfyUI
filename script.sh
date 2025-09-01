@@ -132,6 +132,12 @@ wget -c https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.0.saf
 
 # wget -c https://huggingface.co/UmeAiRT/ComfyUI-Auto_installer/resolve/main/models/unet/WAN/Wan2.1-VACE-14B-Q4_K_S.gguf -P ./models/diffusion_models
 
+ln -s /kaggle/input/wan2-1-i2v-14b-480p-q4-k-m/wan2.1-i2v-14b-480p-Q4_K_M.gguf ./models/diffusion_models/wan2.1-i2v-14b-480p-Q4_K_M.gguf
+ln -s /kaggle/input/wan2-1-i2v-14b-480p-fp8-e5m2/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors ./models/diffusion_models/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors
+ln -s /kaggle/input/wan2-1-vae-bf16/Wan2_1_VAE_bf16.safetensors ./models/vae/Wan2_1_VAE_bf16.safetensors
+ln -s /kaggle/input/umt5-xxl-enc-fp8-e4m3fn/umt5-xxl-enc-fp8_e4m3fn.safetensors ./models/clip/umt5-xxl-enc-fp8_e4m3fn.safetensors
+ln -s /kaggle/input/open-clip-xlm-roberta-large-14-fp16/open-clip-xlm-roberta-large-14_fp16.safetensors ./models/clip/open-clip-xlm-roberta-large-14_fp16.safetensors
+
 # 放大
 wget -c https://huggingface.co/schwgHao/RealESRGAN_x4plus/resolve/main/RealESRGAN_x4plus.pth -P ./models/upscale_models
 wget -c https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth -P ./models/upscale_models
