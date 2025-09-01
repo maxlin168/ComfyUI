@@ -228,6 +228,9 @@ class VideoFromFile(VideoInput):
                         output_container.mux(packet)
 
 class VideoFromComponents(VideoInput):
+    """
+    Class representing video input from tensors.
+    """
     def get_video_data(
         self,
         format: VideoContainer = VideoContainer.AUTO,
@@ -237,9 +240,6 @@ class VideoFromComponents(VideoInput):
         buffer = io.BytesIO()
         self.save_to(buffer, format, codec, metadata)
         return buffer.getvalue()
-    """
-    Class representing video input from tensors.
-    """
 
     def __init__(self, components: VideoComponents):
         self.__components = components
