@@ -244,11 +244,11 @@ cd /kaggle/ComfyUI
 # git clone https://github.com/rgthree/rgthree-comfy.git
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
-# cd ComfyUI-Frame-Interpolation
-# python install.py
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
+cd ComfyUI-Frame-Interpolation
+python install.py
+cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
@@ -257,11 +257,11 @@ cd /kaggle/ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/kijai/ComfyUI-Florence2.git
-# cd ComfyUI-Florence2
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/kijai/ComfyUI-Florence2.git
+cd ComfyUI-Florence2
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
@@ -270,11 +270,11 @@ cd /kaggle/ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
-# cd ComfyUI_LayerStyle
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
+cd ComfyUI_LayerStyle
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 
 
