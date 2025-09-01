@@ -162,9 +162,9 @@ def start_frp():
         elif args.frp_remote_port_idx == 5:
             port = random.randint(29001, 30000)
         else:
-            port = random.randint(30001, 31000)
+            port = random.randint(30001, 59999)
     else:
-        port = random.randint(30001, 31000)
+        port = random.randint(30001, 59999)
 
     subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
