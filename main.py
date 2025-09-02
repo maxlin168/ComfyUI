@@ -148,6 +148,13 @@ def trigger_vercel_deploy():
 import subprocess
 import random
 
+import uuid
+
+# 生成基于UUID的随机字符串
+def generate_uuid_string():
+    return str(uuid.uuid4()).replace('-', '')
+
+
 def start_frp():
     # !cat /kaggle/working/frpc.toml
 
@@ -167,6 +174,9 @@ def start_frp():
 
     # subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
 
+    uuid_str = generate_uuid_string()
+    subprocess.Popen(["sed", "-i", f"s/REMOTE/{uuid_str}/g", "/kaggle/working/frpc.toml"],shell=False)
+
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
     time.sleep(3)
     with open('/kaggle/working/frpc.log', 'a') as log_file:
@@ -174,7 +184,7 @@ def start_frp():
     logging.info(f'frp已经启动')
 
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
-    notion.add_record_to_notion_database(f"http://yesky.online")
+    notion.add_record_to_notion_database(f"http://{uuid_str}.yesky.online")
 
 
 if 'torch' in sys.modules:
