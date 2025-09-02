@@ -5,7 +5,7 @@ auth.token = "xF5kJa#v"
 
 [[proxies]]
 name = 'kaggle'
-type = 'tcp'
+type = 'http'
 localIP = '127.0.0.1'
 localPort = 8188
 subdomain = 'kaggle'
