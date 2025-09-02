@@ -150,23 +150,23 @@ import random
 
 def start_frp():
     # !cat /kaggle/working/frpc.toml
-    # subprocess.Popen(["sed", "-i", f"s/8188/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
 
-    port = 27666 # 根据 args.frp_remote_port_idx  随机一个端口
+    # port = 27666 # 根据 args.frp_remote_port_idx  随机一个端口
 
-    if args.frp_remote_port_idx is not None:
-        if args.frp_remote_port_idx == 3:
-            port = random.randint(27001, 28000)
-        elif args.frp_remote_port_idx == 4:
-            port = random.randint(28001, 29000)
-        elif args.frp_remote_port_idx == 5:
-            port = random.randint(29001, 30000)
-        else:
-            port = random.randint(30001, 59999)
-    else:
-        port = random.randint(30001, 59999)
+    # if args.frp_remote_port_idx is not None:
+    #     if args.frp_remote_port_idx == 3:
+    #         port = random.randint(27001, 28000)
+    #     elif args.frp_remote_port_idx == 4:
+    #         port = random.randint(28001, 29000)
+    #     elif args.frp_remote_port_idx == 5:
+    #         port = random.randint(29001, 30000)
+    #     else:
+    #         port = random.randint(30001, 59999)
+    # else:
+    #     port = random.randint(30001, 59999)
 
-    subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
+    # subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
+
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
     time.sleep(3)
     with open('/kaggle/working/frpc.log', 'a') as log_file:

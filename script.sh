@@ -488,7 +488,7 @@ cd /kaggle/ComfyUI
 wget -O  /kaggle/working/frp_0.54.0_linux_amd64.tar.gz https://github.com/fatedier/frp/releases/download/v0.54.0/frp_0.54.0_linux_amd64.tar.gz
 tar -xzvf /kaggle/working/frp_0.54.0_linux_amd64.tar.gz -C /kaggle/working
 cp -p /kaggle/working/frp_0.54.0_linux_amd64/frpc /kaggle/working/frpc
-cp -p /kaggle/ComfyUI/template_frpc /kaggle/working/frpc.toml
+cp -p /kaggle/ComfyUI/template_frpc_new /kaggle/working/frpc.toml
 
 # 1, 2 主要是为了兼容之前的comfyUI notebook（不想一个一个的去修改了）
 # FRP_CONFIG_FILE="/kaggle/working/frpc.toml"

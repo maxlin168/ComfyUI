@@ -1,0 +1,11 @@
+serverAddr = "nav001.online"
+serverPort = 27000
+auth.method = "token"
+auth.token = "xF5kJa#v"
+
+[[proxies]]
+name = 'kaggle'
+type = 'tcp'
+localIP = '127.0.0.1'
+localPort = 8188
+subdomain = 'kaggle'
