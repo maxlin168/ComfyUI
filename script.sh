@@ -195,9 +195,9 @@ cd /kaggle/ComfyUI
 # cd /kaggle/ComfyUI
 
 # nunchaku_nodes: 去掉加载model时候的-P,还报错吗？！
-# cd custom_nodes
-# git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
+cd /kaggle/ComfyUI
 
 
 # 3 ComfyUI-GGUF
