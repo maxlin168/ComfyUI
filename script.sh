@@ -138,6 +138,10 @@ ln -s /kaggle/input/wan2-1-vae-bf16/Wan2_1_VAE_bf16.safetensors ./models/vae/Wan
 ln -s /kaggle/input/umt5-xxl-enc-fp8-e4m3fn/umt5-xxl-enc-fp8_e4m3fn.safetensors ./models/clip/umt5-xxl-enc-fp8_e4m3fn.safetensors
 ln -s /kaggle/input/open-clip-xlm-roberta-large-14-fp16/open-clip-xlm-roberta-large-14_fp16.safetensors ./models/clip/open-clip-xlm-roberta-large-14_fp16.safetensors
 
+ln -s /kaggle/input/qwen-image-q4-k-s/qwen-image-Q4_K_S.gguf ./models/diffusion_models/qwen-image-Q4_K_S.gguf
+ln -s /kaggle/input/qwen-image-edit-q4-k-s/Qwen_Image_Edit-Q4_K_S.gguf ./models/diffusion_models/Qwen_Image_Edit-Q4_K_S.gguf
+ln -s /kaggle/input/qwen2-5-vl-7b-instruct-mmproj-bf16/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf ./models/text_encoders/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf
+
 # 放大
 wget -c https://huggingface.co/schwgHao/RealESRGAN_x4plus/resolve/main/RealESRGAN_x4plus.pth -P ./models/upscale_models
 wget -c https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth -P ./models/upscale_models
