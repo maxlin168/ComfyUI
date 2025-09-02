@@ -174,6 +174,7 @@ def start_frp():
     logging.info(f'frp已经启动')
 
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
+    notion.add_record_to_notion_database(f"http://yesky.online")
 
 
 if 'torch' in sys.modules:
