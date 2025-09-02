@@ -575,6 +575,7 @@ def free_memory(memory_required, device, keep_loaded=[]):
 
     if len(unloaded_model) > 0:
         soft_empty_cache()
+        gc.collect()
     else:
         if vram_state != VRAMState.HIGH_VRAM:
             mem_free_total, mem_free_torch = get_free_memory(device, torch_free_too=True)
