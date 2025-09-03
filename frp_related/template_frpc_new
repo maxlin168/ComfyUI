@@ -5,7 +5,7 @@ auth.token = "xF5kJa#v"
 
 [[proxies]]
 name = 'web-REMOTE'
-type = 'http'
+type = 'https'
 localIP = '127.0.0.1'
 localPort = 8188
 subdomain = "REMOTE"
