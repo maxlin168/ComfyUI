@@ -137,21 +137,21 @@ wget -c https://huggingface.co/JackAILab/ConsistentID/resolve/main/ConsistentID_
 
 # wan / qwen image 模型 社区版本
 
-ln -s /kaggle/input/wan2-1-i2v-14b-480p-q4-k-m/wan2.1-i2v-14b-480p-Q4_K_M.gguf ./models/diffusion_models/wan2.1-i2v-14b-480p-Q4_K_M.gguf
-ln -s /kaggle/input/wan2-1-i2v-14b-480p-fp8-e5m2/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors ./models/diffusion_models/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors
-ln -s /kaggle/input/wan2-1-vae-bf16/Wan2_1_VAE_bf16.safetensors ./models/vae/Wan2_1_VAE_bf16.safetensors
-ln -s /kaggle/input/umt5-xxl-enc-fp8-e4m3fn/umt5-xxl-enc-fp8_e4m3fn.safetensors ./models/clip/umt5-xxl-enc-fp8_e4m3fn.safetensors
-ln -s /kaggle/input/open-clip-xlm-roberta-large-14-fp16/open-clip-xlm-roberta-large-14_fp16.safetensors ./models/clip/open-clip-xlm-roberta-large-14_fp16.safetensors
+# ln -s /kaggle/input/wan2-1-i2v-14b-480p-q4-k-m/wan2.1-i2v-14b-480p-Q4_K_M.gguf ./models/diffusion_models/wan2.1-i2v-14b-480p-Q4_K_M.gguf
+# ln -s /kaggle/input/wan2-1-i2v-14b-480p-fp8-e5m2/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors ./models/diffusion_models/Wan2_1-I2V-14B-480P_fp8_e5m2.safetensors
+# ln -s /kaggle/input/wan2-1-vae-bf16/Wan2_1_VAE_bf16.safetensors ./models/vae/Wan2_1_VAE_bf16.safetensors
+# ln -s /kaggle/input/umt5-xxl-enc-fp8-e4m3fn/umt5-xxl-enc-fp8_e4m3fn.safetensors ./models/clip/umt5-xxl-enc-fp8_e4m3fn.safetensors
+# ln -s /kaggle/input/open-clip-xlm-roberta-large-14-fp16/open-clip-xlm-roberta-large-14_fp16.safetensors ./models/clip/open-clip-xlm-roberta-large-14_fp16.safetensors
 
-ln -s /kaggle/input/qwen-image-q4-k-s/qwen-image-Q4_K_S.gguf ./models/diffusion_models/qwen-image-Q4_K_S.gguf
-ln -s /kaggle/input/qwen-image-edit-q4-k-s/Qwen_Image_Edit-Q4_K_S.gguf ./models/diffusion_models/Qwen_Image_Edit-Q4_K_S.gguf
-ln -s /kaggle/input/qwen2-5-vl-7b-instruct-mmproj-bf16/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf ./models/text_encoders/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf
+# ln -s /kaggle/input/qwen-image-q4-k-s/qwen-image-Q4_K_S.gguf ./models/diffusion_models/qwen-image-Q4_K_S.gguf
+# ln -s /kaggle/input/qwen-image-edit-q4-k-s/Qwen_Image_Edit-Q4_K_S.gguf ./models/diffusion_models/Qwen_Image_Edit-Q4_K_S.gguf
+# ln -s /kaggle/input/qwen2-5-vl-7b-instruct-mmproj-bf16/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf ./models/text_encoders/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf
 
-ln -s /kaggle/input/qwen-image-q6-k/qwen-image-Q6_K.gguf ./models/diffusion_models/qwen-image-Q6_K.gguf
-ln -s /kaggle/input/qwen-image-edit-q6-k/Qwen_Image_Edit-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-Q6_K.gguf
+# ln -s /kaggle/input/qwen-image-q6-k/qwen-image-Q6_K.gguf ./models/diffusion_models/qwen-image-Q6_K.gguf
+# ln -s /kaggle/input/qwen-image-edit-q6-k/Qwen_Image_Edit-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-Q6_K.gguf
 
-ln -s /kaggle/input/svdq-int4-r128-qwen-image/svdq-int4_r128-qwen-image.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image.safetensors
-ln -s /kaggle/input/svdq-int4-r128-qwen-image-lightningv1-0-4steps/svdq-int4_r128-qwen-image-lightningv1.0-4steps.safetensors ./models/loras
+# ln -s /kaggle/input/svdq-int4-r128-qwen-image/svdq-int4_r128-qwen-image.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image.safetensors
+# ln -s /kaggle/input/svdq-int4-r128-qwen-image-lightningv1-0-4steps/svdq-int4_r128-qwen-image-lightningv1.0-4steps.safetensors ./models/loras
 
 
 
