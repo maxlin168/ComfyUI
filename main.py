@@ -151,7 +151,7 @@ def add_backend_host_to_worker_kv(backend_host):
     # 构造要发送的 JSON 数据
     # 这里的 "url" 键必须与 Worker 期望的参数名相匹配
     payload = {
-        "url": backend_url
+        "url": backend_host
     }
 
     try:
