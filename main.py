@@ -178,9 +178,10 @@ import random
 
 import uuid
 
-# 生成基于UUID的随机字符串
+# 生成基于UUID的随机字符串, 以comfy-开头。 在 Cloudflare DNS记录中配置。
 def generate_uuid_string():
-    return str(uuid.uuid4()).replace('-', '')
+    uuid_part = str(uuid.uuid4()).replace('-', '')
+    return f"comfy-{uuid_part}"
 
 
 def start_frp():
