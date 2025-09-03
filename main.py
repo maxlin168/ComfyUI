@@ -145,7 +145,7 @@ def trigger_vercel_deploy():
     except requests.exceptions.RequestException as req_err:
         print(f"An error occurred: {req_err}")
 
-def add_backend_url_to_worker_kv(backend_url):
+def add_backend_host_to_worker_kv(backend_host):
     worker_url = "https://log.yesky.online/add-backend"
 
     # 构造要发送的 JSON 数据
@@ -213,7 +213,7 @@ def start_frp():
 
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
     notion.add_record_to_notion_database(f"http://{uuid_str}.yesky.online")
-    add_backend_url_to_worker_kv(f"http://{uuid_str}.yesky.online")
+    add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
 
 
 if 'torch' in sys.modules:
