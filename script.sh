@@ -489,7 +489,7 @@ wget -O  /kaggle/working/frp_0.54.0_linux_amd64.tar.gz https://github.com/fatedi
 tar -xzvf /kaggle/working/frp_0.54.0_linux_amd64.tar.gz -C /kaggle/working
 cp -p /kaggle/working/frp_0.54.0_linux_amd64/frpc /kaggle/working/frpc
 
-cp -p /kaggle/ComfyUI/frp_related/template_frpc_new_https /kaggle/working/frpc.toml
+cp -p /kaggle/ComfyUI/frp_related/template_frpc_new_subdomain /kaggle/working/frpc.toml
 
 
 # 1, 2 主要是为了兼容之前的comfyUI notebook（不想一个一个的去修改了）

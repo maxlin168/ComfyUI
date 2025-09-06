@@ -3,17 +3,16 @@ serverPort = 27000
 auth.method = "token"
 auth.token = "xF5kJa#v"
 
-
 [[proxies]]
 name = 'web-REMOTE'
 type = 'https'
 
-customDomains = ["k.yesky.online"]
+subdomain = "REMOTE"
 
 [proxies.plugin]
 type = "https2http"
 localAddr = "127.0.0.1:8188"
-crtPath = "/kaggle/ComfyUI/frp_related/fullchain.pem"
-keyPath = "/kaggle/ComfyUI/frp_related/privkey.pem"
+crtPath = "/kaggle/ComfyUI/frp_related/certificate.crt"
+keyPath = "/kaggle/ComfyUI/frp_related/private.key"
 hostHeaderRewrite = "127.0.0.1"
 requestHeaders.set.x-from-where = "frp"
