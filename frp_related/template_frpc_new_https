@@ -1,3 +1,7 @@
+# 指定域名模式 
+# DNS record: A记录, Name: k, Content: {ip地址}
+# 文档: https://gofrp.org/en/docs/examples/vhost-http/
+
 serverAddr = "117.72.185.137"
 serverPort = 27000
 auth.method = "token"
@@ -13,7 +17,10 @@ customDomains = ["k.yesky.online"]
 [proxies.plugin]
 type = "https2http"
 localAddr = "127.0.0.1:8188"
-crtPath = "/kaggle/ComfyUI/frp_related/fullchain.pem"
-keyPath = "/kaggle/ComfyUI/frp_related/privkey.pem"
+
+# 这里是单个域名证书
+crtPath = "/kaggle/ComfyUI/frp_related/certificate.crt"
+keyPath = "/kaggle/ComfyUI/frp_related/private.key"
+
 hostHeaderRewrite = "127.0.0.1"
 requestHeaders.set.x-from-where = "frp"
