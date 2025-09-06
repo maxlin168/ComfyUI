@@ -67,6 +67,8 @@ async def compress_body(request: web.Request, handler):
 
 
 def create_cors_middleware(allowed_origin: str):
+    allowed_origins = {o.strip() for o in allowed_origin.split(',')}
+
     @web.middleware
     async def cors_middleware(request: web.Request, handler):
         if request.method == "OPTIONS":
@@ -75,38 +77,46 @@ def create_cors_middleware(allowed_origin: str):
         else:
             response = await handler(request)
 
-        response.headers['Access-Control-Allow-Origin'] = allowed_origin
-        response.headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, PUT, OPTIONS'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
-        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        request_origin = request.headers.get('Origin')
+        if '*' in allowed_origins:
+            response.headers['Access-Control-Allow-Origin'] = '*'
+        elif request_origin and request_origin in allowed_origins:
+            response.headers['Access-Control-Allow-Origin'] = request_origin
+
+        if 'Access-Control-Allow-Origin' in response.headers:
+            response.headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, PUT, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+            response.headers['Access-Control-Allow-Credentials'] = 'true'
         return response
 
     return cors_middleware
 
-def is_loopback(host):
-    if host is None:
-        return False
-    try:
-        if ipaddress.ip_address(host).is_loopback:
-            return True
-        else:
-            return False
-    except:
-        pass
 
-    loopback = False
-    for family in (socket.AF_INET, socket.AF_INET6):
+async def cleanup_temp(app):
+    def is_loopback(host):
+        if host is None:
+            return False
         try:
-            r = socket.getaddrinfo(host, None, family, socket.SOCK_STREAM)
-            for family, _, _, _, sockaddr in r:
-                if not ipaddress.ip_address(sockaddr[0]).is_loopback:
-                    return loopback
-                else:
-                    loopback = True
-        except socket.gaierror:
+            if ipaddress.ip_address(host).is_loopback:
+                return True
+            else:
+                return False
+        except:
             pass
 
-    return loopback
+        loopback = False
+        for family in (socket.AF_INET, socket.AF_INET6):
+            try:
+                r = socket.getaddrinfo(host, None, family, socket.SOCK_STREAM)
+                for family, _, _, _, sockaddr in r:
+                    if not ipaddress.ip_address(sockaddr[0]).is_loopback:
+                        return loopback
+                    else:
+                        loopback = True
+            except socket.gaierror:
+                pass
+
+        return loopback
 
 
 def create_origin_only_middleware():
