@@ -13,7 +13,7 @@ customDomains = ["k.yesky.online"]
 
 [proxies.plugin]
 type = "https2http"
-crtPath = "/kaggle/ComfyUI/frp_related/certificate.crt"
-keyPath = "/kaggle/ComfyUI/frp_related/private.key"
+crtPath = "/kaggle/ComfyUI/frp_related/fullchain.pem"
+keyPath = "/kaggle/ComfyUI/frp_related/privkey.pem"
 hostHeaderRewrite = "127.0.0.1"
 requestHeaders.set.x-from-where = "frp"
