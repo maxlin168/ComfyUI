@@ -8,7 +8,8 @@ name = 'web-REMOTE'
 type = 'https'
 localIP = '127.0.0.1'
 localPort = 8188
-subdomain = "REMOTE"
+# subdomain = "REMOTE"
+customDomains = ["k.yesky.online"]
 
 [proxies.plugin]
 type = "https2http"

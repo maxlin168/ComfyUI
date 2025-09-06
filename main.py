@@ -204,7 +204,7 @@ def start_frp():
     # subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
 
     uuid_str = generate_uuid_string()
-    subprocess.Popen(["sed", "-i", f"s/REMOTE/{uuid_str}/g", "/kaggle/working/frpc.toml"],shell=False)
+    # subprocess.Popen(["sed", "-i", f"s/REMOTE/{uuid_str}/g", "/kaggle/working/frpc.toml"],shell=False)
 
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
     time.sleep(3)
@@ -213,9 +213,11 @@ def start_frp():
     logging.info(f'frp已经启动')
 
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
-    notion.add_record_to_notion_database(f"http://{uuid_str}.yesky.online")
-    add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
+    # notion.add_record_to_notion_database(f"http://{uuid_str}.yesky.online")
+    # add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
 
+    notion.add_record_to_notion_database(f"https://k.yesky.online")
+    add_backend_host_to_worker_kv(f"k.yesky.online")
 
 if 'torch' in sys.modules:
     logging.warning("WARNING: Potential Error in code: Torch already imported, torch should never be imported before this point.")
