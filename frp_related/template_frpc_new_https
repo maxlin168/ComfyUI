@@ -3,6 +3,8 @@ serverPort = 27000
 auth.method = "token"
 auth.token = "xF5kJa#v"
 
+tls_enable = true
+
 [[proxies]]
 name = 'web-REMOTE'
 type = 'https'
