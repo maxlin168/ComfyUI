@@ -470,9 +470,9 @@ cd custom_nodes
 git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
 cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
+# cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/Gourieff/ComfyUI-ReActor.git
@@ -481,14 +481,26 @@ cd /kaggle/ComfyUI
 # cd /kaggle/ComfyUI
 
 cd custom_nodes
-git clone https://github.com/1038lab/ComfyUI-JoyCaption.git
+git clone https://github.com/1038lab/ComfyUI-RMBG
+cd ComfyUI-RMBG
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
+
+# 非常耗磁盘空间
+cd custom_nodes
+# GGUF node removed from ComfyUI-JoyCaption in my ComfyUI-JoyCaption repo
+git clone https://github.com/Vander-Bilt/ComfyUI-JoyCaption.git
 cd ComfyUI-JoyCaption
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
+pip install llama-cpp-python
+
+
+
 cd custom_nodes
-git clone https://github.com/SXQBW/ComfyUI-Qwen3.git
-cd ComfyUI-Qwen3
+git clone https://github.com/SXQBW/ComfyUI-Qwen.git
+cd ComfyUI-Qwen
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
