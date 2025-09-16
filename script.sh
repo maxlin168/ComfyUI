@@ -190,14 +190,13 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
 cd /kaggle/ComfyUI
 
 # 2 安装 nunchaku : 更新了！！！ 
-# pip install https://huggingface.co/mit-han-lab/nunchaku/resolve/main/nunchaku-0.3.1+torch2.6-cp311-cp311-linux_x86_64.whl
-pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0dev20250902/nunchaku-1.0.0.dev20250902+torch2.6-cp311-cp311-linux_x86_64.whl
+# pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0dev20250902/nunchaku-1.0.0.dev20250902+torch2.6-cp311-cp311-linux_x86_64.whl
 # # wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
 
 # nunchaku_nodes
-cd custom_nodes
-git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
+# cd /kaggle/ComfyUI
 
 
 # 3 ComfyUI-GGUF
@@ -230,24 +229,24 @@ cd save2hf
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/kijai/ComfyUI-KJNodes.git
-cd ComfyUI-KJNodes
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/kijai/ComfyUI-KJNodes.git
+# cd ComfyUI-KJNodes
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
-cd custom_nodes
-git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
-cd ComfyUI-VideoHelperSuite
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+# cd ComfyUI-VideoHelperSuite
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git
-cd ComfyUI-WanVideoWrapper
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git
+# cd ComfyUI-WanVideoWrapper
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
 # These custom nodes used by workflow VACE ControlNet 1.0 (base).json ------------ start ------------
@@ -267,24 +266,19 @@ cd /kaggle/ComfyUI
 # git clone https://github.com/rgthree/rgthree-comfy.git
 # cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
-cd ComfyUI-Frame-Interpolation
-python install.py
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
+# cd ComfyUI-Frame-Interpolation
+# python install.py
+# cd /kaggle/ComfyUI
+
 
 
 # cd custom_nodes
-# git clone https://github.com/WASasquatch/was-node-suite-comfyui.git
-# cd was-node-suite-comfyui
+# git clone https://github.com/kijai/ComfyUI-Florence2.git
+# cd ComfyUI-Florence2
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/kijai/ComfyUI-Florence2.git
-cd ComfyUI-Florence2
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
@@ -293,11 +287,11 @@ cd /kaggle/ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
-cd ComfyUI_LayerStyle
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
+# cd ComfyUI_LayerStyle
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
 
@@ -345,15 +339,15 @@ cd ComfyUI-Impact-Subpack
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/cubiq/ComfyUI_InstantID
-cd ComfyUI_InstantID
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/cubiq/ComfyUI_InstantID
+# cd ComfyUI_InstantID
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus
+# cd /kaggle/ComfyUI
 
 
 # Goto test no pip install ...
@@ -371,22 +365,22 @@ cd comfyui-crystools
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/melMass/comfy_mtb.git
-cd comfy_mtb
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/melMass/comfy_mtb.git
+# cd comfy_mtb
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 # Test: no pip install ...
-cd custom_nodes
-git clone https://github.com/rgthree/rgthree-comfy.git
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/rgthree/rgthree-comfy.git
+# cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/kijai/ComfyUI-FluxTrainer.git
-cd ComfyUI-FluxTrainer
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/kijai/ComfyUI-FluxTrainer.git
+# cd ComfyUI-FluxTrainer
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
 cd custom_nodes
@@ -442,11 +436,11 @@ cd was-node-suite-comfyui
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/giriss/comfy-image-saver.git
-cd comfy-image-saver
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/giriss/comfy-image-saver.git
+# cd comfy-image-saver
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 
 cd custom_nodes
@@ -459,16 +453,16 @@ cd /kaggle/ComfyUI
 # python install.py
 # cd /kaggle/ComfyUI
 
-cd custom_nodes
-git clone https://github.com/XLabs-AI/x-flux-comfyui.git
-cd x-flux-comfyui
-python setup.py
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/XLabs-AI/x-flux-comfyui.git
+# cd x-flux-comfyui
+# python setup.py
+# cd /kaggle/ComfyUI
 
 
-cd custom_nodes
-git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
+# cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
