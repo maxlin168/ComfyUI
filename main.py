@@ -215,7 +215,9 @@ def start_frp():
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
 
     notion.add_record_to_notion_database(f"https://{uuid_str}.yesky.online")
-    add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
+
+    if args.disable_push_to_worker_kv is None:
+        add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
 
     # notion.add_record_to_notion_database(f"https://k.yesky.online")
     # add_backend_host_to_worker_kv(f"k.yesky.online")

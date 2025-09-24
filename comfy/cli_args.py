@@ -50,6 +50,7 @@ parser.add_argument("--input-directory", type=str, default=None, help="Set the C
 parser.add_argument("--auto-launch", action="store_true", help="Automatically launch ComfyUI in the default browser.")
 parser.add_argument("--disable-auto-launch", action="store_true", help="Disable auto launching the browser.")
 parser.add_argument("--disable_trigger_vercel_deploy", default=None, action="store_true", help="Disable vercel deploy.")
+parser.add_argument("--disable_push_to_worker_kv", default=None, action="store_true", help="Disable Push to worker KV.")
 parser.add_argument("--frp_remote_port_idx", type=int, default=None, help="Set remote port idx.")
 parser.add_argument("--notion_token", type=str, default=None, help="Set notion token.")
 
