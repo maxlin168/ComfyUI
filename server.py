@@ -66,19 +66,29 @@ async def compress_body(request: web.Request, handler):
     return response
 
 
-def create_cors_middleware(allowed_origin: str):
+def create_cors_middleware(allowed_origins: list[str]):
     @web.middleware
     async def cors_middleware(request: web.Request, handler):
+        origin = request.headers.get('Origin')
+
         if request.method == "OPTIONS":
-            # Pre-flight request. Reply successfully:
             response = web.Response()
         else:
             response = await handler(request)
 
-        response.headers['Access-Control-Allow-Origin'] = allowed_origin
-        response.headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, PUT, OPTIONS'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
-        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        if origin is not None:
+            allow_origin = None
+            if "*" in allowed_origins:
+                allow_origin = origin # Reflect origin
+            elif origin in allowed_origins:
+                allow_origin = origin
+            
+            if allow_origin:
+                response.headers['Access-Control-Allow-Origin'] = allow_origin
+                response.headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, PUT, OPTIONS'
+                response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+                response.headers['Access-Control-Allow-Credentials'] = 'true'
+
         return response
 
     return cors_middleware
@@ -172,7 +182,7 @@ class PromptServer():
             middlewares.append(create_cors_middleware(args.enable_cors_header))
         # else:
         #     middlewares.append(create_origin_only_middleware())
-        middlewares.append(create_cors_middleware("*"))
+
 
         max_upload_size = round(args.max_upload_size * 1024 * 1024)
         self.app = web.Application(client_max_size=max_upload_size, middlewares=middlewares)
