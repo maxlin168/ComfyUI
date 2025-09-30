@@ -190,14 +190,15 @@ cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
 cd /kaggle/ComfyUI
 
-# 2 安装 nunchaku : 更新了！！！ 
-# pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0dev20250902/nunchaku-1.0.0.dev20250902+torch2.6-cp311-cp311-linux_x86_64.whl
-# # wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
-
 # nunchaku_nodes
-# cd custom_nodes
-# git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
+cd /kaggle/ComfyUI
+
+# 安装 nunchaku : 更新了！！！ 
+pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0/nunchaku-1.0.0+torch2.6-cp311-cp311-linux_x86_64.whl
+# wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
+!wget -c https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509.safetensors -P ./models/diffusion_models
 
 
 # 3 ComfyUI-GGUF
