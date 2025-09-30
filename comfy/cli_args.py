@@ -35,6 +35,14 @@ class EnumAction(argparse.Action):
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument("--disable_trigger_vercel_deploy", default=None, action="store_true", help="Disable vercel deploy.")
+parser.add_argument("--disable_push_to_worker_kv", default=None, action="store_true", help="Disable Push to worker KV.")
+parser.add_argument("--frp_remote_port_idx", type=int, default=None, help="Set remote port idx.")
+parser.add_argument("--notion_token", type=str, default=None, help="Set notion token.")
+parser.add_argument("--hf_token", type=str, help="Hugging Face token for uploading files.")
+parser.add_argument("--hf_dataset_name", type=str, help="Hugging Face dataset name for uploading files.")
+
+
 parser.add_argument("--listen", type=str, default="127.0.0.1", metavar="IP", nargs="?", const="0.0.0.0,::", help="Specify the IP address to listen on (default: 127.0.0.1). You can give a list of ip addresses by separating them with a comma like: 127.2.2.2,127.3.3.3 If --listen is provided without an argument, it defaults to 0.0.0.0,:: (listens on all ipv4 and ipv6)")
 parser.add_argument("--port", type=int, default=8188, help="Set the listen port.")
 parser.add_argument("--tls-keyfile", type=str, help="Path to TLS (SSL) key file. Enables TLS, makes app accessible at https://... requires --tls-certfile to function")
@@ -49,11 +57,6 @@ parser.add_argument("--temp-directory", type=str, default=None, help="Set the Co
 parser.add_argument("--input-directory", type=str, default=None, help="Set the ComfyUI input directory. Overrides --base-directory.")
 parser.add_argument("--auto-launch", action="store_true", help="Automatically launch ComfyUI in the default browser.")
 parser.add_argument("--disable-auto-launch", action="store_true", help="Disable auto launching the browser.")
-parser.add_argument("--disable_trigger_vercel_deploy", default=None, action="store_true", help="Disable vercel deploy.")
-parser.add_argument("--disable_push_to_worker_kv", default=None, action="store_true", help="Disable Push to worker KV.")
-parser.add_argument("--frp_remote_port_idx", type=int, default=None, help="Set remote port idx.")
-parser.add_argument("--notion_token", type=str, default=None, help="Set notion token.")
-
 parser.add_argument("--cuda-device", type=int, default=None, metavar="DEVICE_ID", help="Set the id of the cuda device this instance will use. All other devices will not be visible.")
 parser.add_argument("--default-device", type=int, default=None, metavar="DEFAULT_DEVICE_ID", help="Set the id of the default device, all other devices will stay visible.")
 cm_group = parser.add_mutually_exclusive_group()
@@ -148,8 +151,9 @@ class PerformanceFeature(enum.Enum):
     Fp16Accumulation = "fp16_accumulation"
     Fp8MatrixMultiplication = "fp8_matrix_mult"
     CublasOps = "cublas_ops"
+    AutoTune = "autotune"
 
-parser.add_argument("--fast", nargs="*", type=PerformanceFeature, help="Enable some untested and potentially quality deteriorating optimizations. --fast with no arguments enables everything. You can pass a list specific optimizations if you only want to enable specific ones. Current valid optimizations: fp16_accumulation fp8_matrix_mult cublas_ops")
+parser.add_argument("--fast", nargs="*", type=PerformanceFeature, help="Enable some untested and potentially quality deteriorating optimizations. --fast with no arguments enables everything. You can pass a list specific optimizations if you only want to enable specific ones. Current valid optimizations: {}".format(" ".join(map(lambda c: c.value, PerformanceFeature))))
 
 parser.add_argument("--mmap-torch-files", action="store_true", help="Use mmap when loading ckpt/pt files.")
 parser.add_argument("--disable-mmap", action="store_true", help="Don't use mmap when loading safetensors.")
@@ -159,10 +163,6 @@ parser.add_argument("--quick-test-for-ci", action="store_true", help="Quick test
 parser.add_argument("--windows-standalone-build", action="store_true", help="Windows standalone build: Enable convenient things that most people using the standalone windows build will probably enjoy (like auto opening the page on startup).")
 
 parser.add_argument("--disable-metadata", action="store_true", help="Disable saving prompt metadata in files.")
-
-parser.add_argument("--hf_token", type=str, help="Hugging Face token for uploading files.")
-parser.add_argument("--hf_dataset_name", type=str, help="Hugging Face dataset name for uploading files.")
-
 parser.add_argument("--disable-all-custom-nodes", action="store_true", help="Disable loading all custom nodes.")
 parser.add_argument("--whitelist-custom-nodes", type=str, nargs='+', default=[], help="Specify custom node folders to load even when --disable-all-custom-nodes is enabled.")
 parser.add_argument("--disable-api-nodes", action="store_true", help="Disable loading all api nodes.")

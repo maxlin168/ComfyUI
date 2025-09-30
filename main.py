@@ -11,139 +11,13 @@ import itertools
 import utils.extra_config
 import logging
 import sys
-
-import notion
-import requests
-
-import cuda_malloc
-
-setup_logger(log_level=args.verbose, use_stdout=args.log_stdout)
-
-def apply_custom_paths():
-    # extra model paths
-    extra_model_paths_config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "extra_model_paths.yaml")
-    if os.path.isfile(extra_model_paths_config_path):
-        utils.extra_config.load_extra_path_config(extra_model_paths_config_path)
-
-    if args.extra_model_paths_config:
-        for config_path in itertools.chain(*args.extra_model_paths_config):
-            utils.extra_config.load_extra_path_config(config_path)
-
-    # --output-directory, --input-directory, --user-directory
-    if args.output_directory:
-        output_dir = os.path.abspath(args.output_directory)
-        logging.info(f"Setting output directory to: {output_dir}")
-        folder_paths.set_output_directory(output_dir)
-
-    # These are the default folders that checkpoints, clip and vae models will be saved to when using CheckpointSave, etc.. nodes
-    folder_paths.add_model_folder_path("checkpoints", os.path.join(folder_paths.get_output_directory(), "checkpoints"))
-    folder_paths.add_model_folder_path("clip", os.path.join(folder_paths.get_output_directory(), "clip"))
-    folder_paths.add_model_folder_path("vae", os.path.join(folder_paths.get_output_directory(), "vae"))
-    folder_paths.add_model_folder_path("diffusion_models",
-                                       os.path.join(folder_paths.get_output_directory(), "diffusion_models"))
-    folder_paths.add_model_folder_path("loras", os.path.join(folder_paths.get_output_directory(), "loras"))
-
-    if args.input_directory:
-        input_dir = os.path.abspath(args.input_directory)
-        logging.info(f"Setting input directory to: {input_dir}")
-        folder_paths.set_input_directory(input_dir)
-
-    if args.user_directory:
-        user_dir = os.path.abspath(args.user_directory)
-        logging.info(f"Setting user directory to: {user_dir}")
-        folder_paths.set_user_directory(user_dir)
-
-
 from comfy_execution.progress import get_progress_state
 from comfy_execution.utils import get_executing_context
 from comfy_api import feature_flags
 
 
-def execute_prestartup_script():
-    if args.disable_all_custom_nodes and len(args.whitelist_custom_nodes) == 0:
-        return
-
-    def execute_script(script_path):
-        module_name = os.path.splitext(script_path)[0]
-        try:
-            spec = importlib.util.spec_from_file_location(module_name, script_path)
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            return True
-        except Exception as e:
-            logging.error(f"Failed to execute startup-script: {script_path} / {e}")
-        return False
-
-    node_paths = folder_paths.get_folder_paths("custom_nodes")
-    for custom_node_path in node_paths:
-        possible_modules = os.listdir(custom_node_path)
-        node_prestartup_times = []
-
-        for possible_module in possible_modules:
-            module_path = os.path.join(custom_node_path, possible_module)
-            if os.path.isfile(module_path) or module_path.endswith(".disabled") or module_path == "__pycache__":
-                continue
-
-            script_path = os.path.join(module_path, "prestartup_script.py")
-            if os.path.exists(script_path):
-                if args.disable_all_custom_nodes and possible_module not in args.whitelist_custom_nodes:
-                    logging.info(f"Prestartup Skipping {possible_module} due to disable_all_custom_nodes and whitelist_custom_nodes")
-                    continue
-                time_before = time.perf_counter()
-                success = execute_script(script_path)
-                node_prestartup_times.append((time.perf_counter() - time_before, module_path, success))
-    if len(node_prestartup_times) > 0:
-        logging.info("\nPrestartup times for custom nodes:")
-        for n in sorted(node_prestartup_times):
-            if n[2]:
-                import_message = ""
-            else:
-                import_message = " (PRESTARTUP FAILED)"
-            logging.info("{:6.1f} seconds{}: {}".format(n[0], import_message, n[1]))
-        logging.info("")
-
-apply_custom_paths()
-execute_prestartup_script()
 
 
-# Main code
-import asyncio
-import shutil
-import threading
-import gc
-
-
-if os.name == "nt":
-    logging.getLogger("xformers").addFilter(lambda record: 'A matching Triton is not available' not in record.getMessage())
-
-
-
-# The Vercel deploy hook URL
-# deploy_hook_url = "https://api.vercel.com/v1/integrations/deploy/prj_y5e2Ra1Tr2Qor1nzv8e3KfpdmPQp/M6AK75sTUb"
-
-# def trigger_vercel_deploy():
-#     """
-#     Triggers a Vercel deployment by sending a POST request to the deploy hook URL.
-#     """
-#     try:
-#         response = requests.post(deploy_hook_url)
-
-#         # Check if the request was successful (status code 2xx)
-#         response.raise_for_status()
-
-#         print(f"Deployment triggered successfully! Status Code: {response.status_code}")
-#         print("Response from Vercel:")
-#         print(response.text)
-
-#     except requests.exceptions.HTTPError as http_err:
-#         print(f"HTTP error occurred: {http_err}")
-#         print(f"Response content: {response.text}")
-#     except requests.exceptions.ConnectionError as conn_err:
-#         print(f"Connection error occurred: {conn_err}")
-#     except requests.exceptions.Timeout as timeout_err:
-#         print(f"Timeout error occurred: {timeout_err}")
-#     except requests.exceptions.RequestException as req_err:
-#         print(f"An error occurred: {req_err}")
 
 def add_backend_host_to_worker_kv(backend_host):
     worker_url = "https://log.yesky.online/add-backend"
@@ -221,6 +95,133 @@ def start_frp():
 
     # notion.add_record_to_notion_database(f"https://k.yesky.online")
     # add_backend_host_to_worker_kv(f"k.yesky.online")
+
+
+
+if __name__ == "__main__":
+    #NOTE: These do not do anything on core ComfyUI, they are for custom nodes.
+    os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
+    os.environ['DO_NOT_TRACK'] = '1'
+
+setup_logger(log_level=args.verbose, use_stdout=args.log_stdout)
+
+def apply_custom_paths():
+    # extra model paths
+    extra_model_paths_config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "extra_model_paths.yaml")
+    if os.path.isfile(extra_model_paths_config_path):
+        utils.extra_config.load_extra_path_config(extra_model_paths_config_path)
+
+    if args.extra_model_paths_config:
+        for config_path in itertools.chain(*args.extra_model_paths_config):
+            utils.extra_config.load_extra_path_config(config_path)
+
+    # --output-directory, --input-directory, --user-directory
+    if args.output_directory:
+        output_dir = os.path.abspath(args.output_directory)
+        logging.info(f"Setting output directory to: {output_dir}")
+        folder_paths.set_output_directory(output_dir)
+
+    # These are the default folders that checkpoints, clip and vae models will be saved to when using CheckpointSave, etc.. nodes
+    folder_paths.add_model_folder_path("checkpoints", os.path.join(folder_paths.get_output_directory(), "checkpoints"))
+    folder_paths.add_model_folder_path("clip", os.path.join(folder_paths.get_output_directory(), "clip"))
+    folder_paths.add_model_folder_path("vae", os.path.join(folder_paths.get_output_directory(), "vae"))
+    folder_paths.add_model_folder_path("diffusion_models",
+                                       os.path.join(folder_paths.get_output_directory(), "diffusion_models"))
+    folder_paths.add_model_folder_path("loras", os.path.join(folder_paths.get_output_directory(), "loras"))
+
+    if args.input_directory:
+        input_dir = os.path.abspath(args.input_directory)
+        logging.info(f"Setting input directory to: {input_dir}")
+        folder_paths.set_input_directory(input_dir)
+
+    if args.user_directory:
+        user_dir = os.path.abspath(args.user_directory)
+        logging.info(f"Setting user directory to: {user_dir}")
+        folder_paths.set_user_directory(user_dir)
+
+
+def execute_prestartup_script():
+    if args.disable_all_custom_nodes and len(args.whitelist_custom_nodes) == 0:
+        return
+
+    def execute_script(script_path):
+        module_name = os.path.splitext(script_path)[0]
+        try:
+            spec = importlib.util.spec_from_file_location(module_name, script_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            return True
+        except Exception as e:
+            logging.error(f"Failed to execute startup-script: {script_path} / {e}")
+        return False
+
+    node_paths = folder_paths.get_folder_paths("custom_nodes")
+    for custom_node_path in node_paths:
+        possible_modules = os.listdir(custom_node_path)
+        node_prestartup_times = []
+
+        for possible_module in possible_modules:
+            module_path = os.path.join(custom_node_path, possible_module)
+            if os.path.isfile(module_path) or module_path.endswith(".disabled") or module_path == "__pycache__":
+                continue
+
+            script_path = os.path.join(module_path, "prestartup_script.py")
+            if os.path.exists(script_path):
+                if args.disable_all_custom_nodes and possible_module not in args.whitelist_custom_nodes:
+                    logging.info(f"Prestartup Skipping {possible_module} due to disable_all_custom_nodes and whitelist_custom_nodes")
+                    continue
+                time_before = time.perf_counter()
+                success = execute_script(script_path)
+                node_prestartup_times.append((time.perf_counter() - time_before, module_path, success))
+    if len(node_prestartup_times) > 0:
+        logging.info("\nPrestartup times for custom nodes:")
+        for n in sorted(node_prestartup_times):
+            if n[2]:
+                import_message = ""
+            else:
+                import_message = " (PRESTARTUP FAILED)"
+            logging.info("{:6.1f} seconds{}: {}".format(n[0], import_message, n[1]))
+        logging.info("")
+
+apply_custom_paths()
+execute_prestartup_script()
+
+
+# Main code
+import asyncio
+import shutil
+import threading
+import gc
+
+
+if os.name == "nt":
+    os.environ['MIMALLOC_PURGE_DELAY'] = '0'
+
+if __name__ == "__main__":
+    if args.default_device is not None:
+        default_dev = args.default_device
+        devices = list(range(32))
+        devices.remove(default_dev)
+        devices.insert(0, default_dev)
+        devices = ','.join(map(str, devices))
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(devices)
+        os.environ['HIP_VISIBLE_DEVICES'] = str(devices)
+
+    if args.cuda_device is not None:
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda_device)
+        os.environ['HIP_VISIBLE_DEVICES'] = str(args.cuda_device)
+        os.environ["ASCEND_RT_VISIBLE_DEVICES"] = str(args.cuda_device)
+        logging.info("Set cuda device to: {}".format(args.cuda_device))
+
+    if args.oneapi_device_selector is not None:
+        os.environ['ONEAPI_DEVICE_SELECTOR'] = args.oneapi_device_selector
+        logging.info("Set oneapi device selector to: {}".format(args.oneapi_device_selector))
+
+    if args.deterministic:
+        if 'CUBLAS_WORKSPACE_CONFIG' not in os.environ:
+            os.environ['CUBLAS_WORKSPACE_CONFIG'] = ":4096:8"
+
+    import cuda_malloc
 
 if 'torch' in sys.modules:
     logging.warning("WARNING: Potential Error in code: Torch already imported, torch should never be imported before this point.")
@@ -434,41 +435,7 @@ def start_comfyui(asyncio_loop=None):
 
 
 if __name__ == "__main__":
-
-
-    #NOTE: These do not do anything on core ComfyUI, they are for custom nodes.
-    os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
-    os.environ['DO_NOT_TRACK'] = '1'
-
     start_frp()
-    
-    # print("disable_trigger_vercel_deploy: ", args.disable_trigger_vercel_deploy)
-    # if args.disable_trigger_vercel_deploy is None:
-    #     trigger_vercel_deploy()
-
-    if args.default_device is not None:
-        default_dev = args.default_device
-        devices = list(range(32))
-        devices.remove(default_dev)
-        devices.insert(0, default_dev)
-        devices = ','.join(map(str, devices))
-        os.environ['CUDA_VISIBLE_DEVICES'] = str(devices)
-        os.environ['HIP_VISIBLE_DEVICES'] = str(devices)
-
-    if args.cuda_device is not None:
-        os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda_device)
-        os.environ['HIP_VISIBLE_DEVICES'] = str(args.cuda_device)
-        logging.info("Set cuda device to: {}".format(args.cuda_device))
-
-    if args.oneapi_device_selector is not None:
-        os.environ['ONEAPI_DEVICE_SELECTOR'] = args.oneapi_device_selector
-        logging.info("Set oneapi device selector to: {}".format(args.oneapi_device_selector))
-
-    if args.deterministic:
-        if 'CUBLAS_WORKSPACE_CONFIG' not in os.environ:
-            os.environ['CUBLAS_WORKSPACE_CONFIG'] = ":4096:8"
-
-
     # Running directly, just start ComfyUI.
     logging.info("Python version: {}".format(sys.version))
     logging.info("ComfyUI version: {}".format(comfyui_version.__version__))
