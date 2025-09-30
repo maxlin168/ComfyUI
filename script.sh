@@ -198,8 +198,9 @@ cd /kaggle/ComfyUI
 # 安装 nunchaku : 更新了！！！ 
 pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0/nunchaku-1.0.0+torch2.6-cp311-cp311-linux_x86_64.whl
 # wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
-wget -c https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509.safetensors -P ./models/diffusion_models
 
+#wget -c https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509.safetensors -P ./models/diffusion_models
+ln -s /kaggle/input/svdq-int4-r128-qwen-image-edit-2509/svdq-int4_r128-qwen-image-edit-2509.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image-edit-2509.safetensors
 
 # 3 ComfyUI-GGUF
 cd custom_nodes
