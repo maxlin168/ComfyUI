@@ -71,9 +71,6 @@ ln -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_m
 # kontext turnaround sheet lora: It won't work well on real human photos
 # wget -c https://huggingface.co/reverentelusarca/kontext-turnaround-sheet-lora-v1/resolve/main/kontext-turnaround-sheet-v1.safetensors -P ./models/loras
 
-#nunchaku
-# ln -s /kaggle/input/svdq-int4-r32-flux-1-kontext-dev/svdq-int4_r32-flux.1-kontext-dev.safetensors ./models/diffusion_models
-
 
 #iniverseMixSFWNSFW_ponyRealGuofengV51  dreamshaperXL_lightningDPMSDE
 # wget -c "https://civitai.com/api/download/models/1759168?type=Model&format=SafeTensor&size=full&fp=fp16" -O ./models/checkpoints/Juggernaut-XL-Ragnarok.safetensors
@@ -197,10 +194,13 @@ cd /kaggle/ComfyUI
 
 # 安装 nunchaku : 更新了！！！ 
 pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0/nunchaku-1.0.0+torch2.6-cp311-cp311-linux_x86_64.whl
+
 # wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
+ln -s /kaggle/input/svdq-int4-r32-flux-1-kontext-dev/svdq-int4_r32-flux.1-kontext-dev.safetensors ./models/diffusion_models/svdq-int4_r32-flux.1-kontext-dev.safetensors
 
 #wget -c https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509.safetensors -P ./models/diffusion_models
 ln -s /kaggle/input/svdq-int4-r128-qwen-image-edit-2509/svdq-int4_r128-qwen-image-edit-2509.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image-edit-2509.safetensors
+ln -s /kaggle/input/svdq-int4-r32-qwen-image-edit-2509/svdq-int4_r32-qwen-image-edit-2509.safetensors ./models/diffusion_models/svdq-int4_r32-qwen-image-edit-2509.safetensors
 
 # 3 ComfyUI-GGUF
 cd custom_nodes
