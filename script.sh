@@ -233,9 +233,9 @@ cd /kaggle/ComfyUI
 
 
 # 6 Custom-Scripts
-# cd custom_nodes
-# git clone https://github.com/Vander-Bilt/ComfyUI-Custom-Scripts.git
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/Vander-Bilt/ComfyUI-Custom-Scripts.git
+cd /kaggle/ComfyUI
 
 # 7 save2hf
 cd custom_nodes
@@ -290,10 +290,10 @@ cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
-# git clone https://github.com/yolain/ComfyUI-Easy-Use
-# cd ComfyUI-Easy-Use
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+git clone https://github.com/yolain/ComfyUI-Easy-Use
+cd ComfyUI-Easy-Use
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
