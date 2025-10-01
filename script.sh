@@ -115,7 +115,7 @@ mkdir -p ./models/pulid/
 wget -c https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.0.safetensors -P ./models/pulid/
 
 # testing it
-wget -c https://huggingface.co/JackAILab/ConsistentID/resolve/main/ConsistentID_SDXL-v1.bin -P ./models/unet
+# wget -c https://huggingface.co/JackAILab/ConsistentID/resolve/main/ConsistentID_SDXL-v1.bin -P ./models/unet
 
 # 质量还不错，速度有点慢
 # wget -c https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf -P ./models/text_encoders
@@ -154,12 +154,12 @@ ln -s /kaggle/input/qwen-image-edit-q6-k/Qwen_Image_Edit-Q6_K.gguf ./models/diff
 
 
 # 放大
-wget -c https://huggingface.co/schwgHao/RealESRGAN_x4plus/resolve/main/RealESRGAN_x4plus.pth -P ./models/upscale_models
-wget -c https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth -P ./models/upscale_models
-wget -c https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/8x_NMKD-Superscale_150000_G.pth -P ./models/upscale_models
-wget -c https://huggingface.co/Phips/4xNomos8kDAT/resolve/main/4xNomos8kDAT.safetensors -P ./models/upscale_models
-wget -c https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth -P ./models/upscale_models
-wget -c https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth -P ./models/upscale_models
+# wget -c https://huggingface.co/schwgHao/RealESRGAN_x4plus/resolve/main/RealESRGAN_x4plus.pth -P ./models/upscale_models
+# wget -c https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth -P ./models/upscale_models
+# wget -c https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/8x_NMKD-Superscale_150000_G.pth -P ./models/upscale_models
+# wget -c https://huggingface.co/Phips/4xNomos8kDAT/resolve/main/4xNomos8kDAT.safetensors -P ./models/upscale_models
+# wget -c https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth -P ./models/upscale_models
+# wget -c https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth -P ./models/upscale_models
 
 ln -s /kaggle/input/clip-vision-h/clip_vision_h.safetensors ./models/clip_vision/clip_vision_h.safetensors
 ln -s /kaggle/input/clip-vit-large-patch14/clip-vit-large-patch14.safetensors ./models/clip_vision/clip-vit-large-patch14.safetensors
@@ -225,15 +225,15 @@ git clone https://github.com/Vander-Bilt/comfyui-encrypt-image.git
 cd /kaggle/ComfyUI
 
 #5 Prompts Generator
-cd custom_nodes
-git clone https://github.com/fairy-root/Flux-Prompt-Generator.git
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/fairy-root/Flux-Prompt-Generator.git
+# cd /kaggle/ComfyUI
 
 
 # 6 Custom-Scripts
-cd custom_nodes
-git clone https://github.com/Vander-Bilt/ComfyUI-Custom-Scripts.git
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/Vander-Bilt/ComfyUI-Custom-Scripts.git
+# cd /kaggle/ComfyUI
 
 # 7 save2hf
 cd custom_nodes
@@ -242,274 +242,115 @@ cd save2hf
 pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
+
 # cd custom_nodes
-# git clone https://github.com/kijai/ComfyUI-KJNodes.git
-# cd ComfyUI-KJNodes
+# git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git
+# cd ComfyUI-AdvancedLivePortrait
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
+# cd ComfyUI-Inspire-Pack
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack comfyui-impact-pack
+# cd comfyui-impact-pack
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
-# git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
-# cd ComfyUI-VideoHelperSuite
+# git clone https://github.com/ltdrdata/ComfyUI-Impact-Subpack
+# cd ComfyUI-Impact-Subpack
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git
-# cd ComfyUI-WanVideoWrapper
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-
-# These custom nodes used by workflow VACE ControlNet 1.0 (base).json ------------ start ------------
-
-
-
-# cd custom_nodes
-# git clone https://github.com/Smirnov75/ComfyUI-mxToolkit.git
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/facok/ComfyUI-HunyuanVideoMultiLora.git
-# cd /kaggle/ComfyUI
-
-
-# cd custom_nodes
-# git clone https://github.com/rgthree/rgthree-comfy.git
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
-# cd ComfyUI-Frame-Interpolation
-# python install.py
-# cd /kaggle/ComfyUI
-
-
-
-# cd custom_nodes
-# git clone https://github.com/kijai/ComfyUI-Florence2.git
-# cd ComfyUI-Florence2
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-
-# cd custom_nodes
-# git clone https://github.com/yuvraj108c/ComfyUI-Upscaler-Tensorrt.git
-# cd ComfyUI-Upscaler-Tensorrt
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/chflame163/ComfyUI_LayerStyle.git
-# cd ComfyUI_LayerStyle
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-
-
-# These custom nodes used by workflow VACE ControlNet 1.0 (base).json ------------ end ------------
-
-
-# MV-Adapter
-# cd custom_nodes
-# git clone https://github.com/huanngzh/ComfyUI-MVAdapter.git
-# cd ComfyUI-MVAdapter
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-
-#cog-consistent-character ??
-# cd custom_nodes
-# git clone --recurse-submodules https://github.com/fofr/cog-consistent-character.git
-# cd cog-consistent-character
-# python ./scripts/install_custom_nodes.py
-# cd /kaggle/ComfyUI
-
-
-cd custom_nodes
-git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git
-cd ComfyUI-AdvancedLivePortrait
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
-cd ComfyUI-Inspire-Pack
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack comfyui-impact-pack
-cd comfyui-impact-pack
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-
-cd custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Impact-Subpack
-cd ComfyUI-Impact-Subpack
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/cubiq/ComfyUI_InstantID
-# cd ComfyUI_InstantID
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus
-# cd /kaggle/ComfyUI
 
 
 # Goto test no pip install ...
 
-cd custom_nodes
-git clone https://github.com/cubiq/ComfyUI_essentials.git
-cd ComfyUI_essentials
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/cubiq/ComfyUI_essentials.git
+# cd ComfyUI_essentials
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
 
 # 监控VRAM等
-cd custom_nodes
-git clone https://github.com/crystian/comfyui-crystools.git
-cd comfyui-crystools
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
 # cd custom_nodes
-# git clone https://github.com/melMass/comfy_mtb.git
-# cd comfy_mtb
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-# Test: no pip install ...
-# cd custom_nodes
-# git clone https://github.com/rgthree/rgthree-comfy.git
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/kijai/ComfyUI-FluxTrainer.git
-# cd ComfyUI-FluxTrainer
+# git clone https://github.com/crystian/comfyui-crystools.git
+# cd comfyui-crystools
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
 
-cd custom_nodes
-git clone https://github.com/yolain/ComfyUI-Easy-Use
-cd ComfyUI-Easy-Use
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
-cd /kaggle/ComfyUI
-
-
-cd custom_nodes
-git clone https://github.com/cubiq/PuLID_ComfyUI.git
-cd PuLID_ComfyUI
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-
-
-cd custom_nodes
-git clone https://github.com/balazik/ComfyUI-PuLID-Flux.git
-cd ComfyUI-PuLID-Flux
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/Vander-Bilt/ComfyUI-PuLID-Flux-Enhanced.git
-cd ComfyUI-PuLID-Flux-Enhanced
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
-cd comfyui_controlnet_aux
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
-
-
-
-cd custom_nodes
-git clone https://github.com/chrisgoringe/cg-use-everywhere.git
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git
-cd /kaggle/ComfyUI
-
-cd custom_nodes
-git clone https://github.com/ltdrdata/was-node-suite-comfyui.git
-cd was-node-suite-comfyui
-pip install -r requirements.txt -q
-cd /kaggle/ComfyUI
 
 # cd custom_nodes
-# git clone https://github.com/giriss/comfy-image-saver.git
-# cd comfy-image-saver
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
-
-
-cd custom_nodes
-git clone https://github.com/tusharbhutt/Endless-Nodes.git
-cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/ssitu/ComfyUI_roop
-# cd ComfyUI_roop
-# python install.py
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/XLabs-AI/x-flux-comfyui.git
-# cd x-flux-comfyui
-# python setup.py
-# cd /kaggle/ComfyUI
-
-
-# cd custom_nodes
-# git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
-# cd /kaggle/ComfyUI
-
-# cd custom_nodes
-# git clone https://github.com/Gourieff/ComfyUI-ReActor.git
-# cd ComfyUI-ReActor
+# git clone https://github.com/yolain/ComfyUI-Easy-Use
+# cd ComfyUI-Easy-Use
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
 # cd custom_nodes
-# git clone https://github.com/1038lab/ComfyUI-RMBG
-# cd ComfyUI-RMBG
+# git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
+# cd /kaggle/ComfyUI
+
+
+# cd custom_nodes
+# git clone https://github.com/cubiq/PuLID_ComfyUI.git
+# cd PuLID_ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# # 非常耗磁盘空间
+
+
 # cd custom_nodes
-# # GGUF node removed from ComfyUI-JoyCaption in my ComfyUI-JoyCaption repo
-# git clone https://github.com/Vander-Bilt/ComfyUI-JoyCaption.git
-# cd ComfyUI-JoyCaption
+# git clone https://github.com/balazik/ComfyUI-PuLID-Flux.git
+# cd ComfyUI-PuLID-Flux
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/Vander-Bilt/ComfyUI-PuLID-Flux-Enhanced.git
+# cd ComfyUI-PuLID-Flux-Enhanced
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
+# cd comfyui_controlnet_aux
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
+
+
+
+# cd custom_nodes
+# git clone https://github.com/chrisgoringe/cg-use-everywhere.git
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/ltdrdata/was-node-suite-comfyui.git
+# cd was-node-suite-comfyui
+# pip install -r requirements.txt -q
+# cd /kaggle/ComfyUI
+
+# cd custom_nodes
+# git clone https://github.com/tusharbhutt/Endless-Nodes.git
+# cd /kaggle/ComfyUI
+
+
+
 
 # pip install llama-cpp-python
 
 
 
-# cd custom_nodes
-# git clone https://github.com/SXQBW/ComfyUI-Qwen.git
-# cd ComfyUI-Qwen
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
 
 # REMOTE_PORT="$1"
 
