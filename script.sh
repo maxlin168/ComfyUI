@@ -145,6 +145,7 @@ wget -c https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.0.saf
 # ln -s /kaggle/input/qwen2-5-vl-7b-instruct-mmproj-bf16/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf ./models/text_encoders/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf
 
 ln -s /kaggle/input/qwen-image-q6-k/qwen-image-Q6_K.gguf ./models/diffusion_models/qwen-image-Q6_K.gguf
+
 ln -s /kaggle/input/qwen-image-edit-2509-q6-k/Qwen-Image-Edit-2509-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-2509-Q6_K.gguf
 ln -s /kaggle/input/qwen-image-edit-q6-k/Qwen_Image_Edit-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-Q6_K.gguf
 
@@ -215,7 +216,6 @@ ln -s /kaggle/input/qwen-image-lightning-8steps-v2-0-bf16/Qwen-Image-Lightning-8
 # 3 ComfyUI-GGUF
 cd custom_nodes
 git clone https://github.com/city96/ComfyUI-GGUF
-git checkout d247022e3fa66851c5084cc251b076aab816423d
 cd ComfyUI-GGUF
 pip install --upgrade gguf
 cd /kaggle/ComfyUI
