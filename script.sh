@@ -48,13 +48,16 @@ wget https://huggingface.co/Madespace/clip/resolve/main/google_t5-v1_1-xxl_encod
 
 # Qwen Image
 ln -s /kaggle/input/qwen-image-edit-fp8-e4m3fn/qwen_image_edit_fp8_e4m3fn.safetensors ./models/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors
-ln -s /kaggle/input/qwen-image-lightning-4steps-v1-0/Qwen-Image-Lightning-4steps-V1.0.safetensors ./models/loras/Qwen-Image-Lightning-4steps-V1.0.safetensors
 ln -s /kaggle/input/qwen-image-vae/qwen_image_vae.safetensors ./models/vae/qwen_image_vae.safetensors
 ln -s /kaggle/input/qwen-2-5-vl-7b-fp8-scaled/qwen_2.5_vl_7b_fp8_scaled.safetensors ./models/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
 
 ln -s /kaggle/input/qwen-image-fp8-e4m3fn/qwen_image_fp8_e4m3fn.safetensors ./models/diffusion_models/qwen_image_fp8_e4m3fn.safetensors
-ln -s /kaggle/input/qwen-image-lightning-8steps-v1-0/Qwen-Image-Lightning-8steps-V1.0.safetensors ./models/loras/Qwen-Image-Lightning-8steps-V1.0.safetensors
 
+ln -s /kaggle/input/qwen-image-lightning-8steps-v2-0/Qwen-Image-Lightning-8steps-V2.0.safetensors ./models/loras/Qwen-Image-Lightning-8steps-V2.0.safetensors
+ln -s /kaggle/input/qwen-image-lightning-4steps-v2-0/Qwen-Image-Lightning-4steps-V2.0.safetensors ./models/loras/Qwen-Image-Lightning-4steps-V2.0.safetensors
+
+ln -s /kaggle/input/qwen-image-edit-lightning-4steps-v1-0/Qwen-Image-Edit-Lightning-4steps-V1.0.safetensors ./models/loras/Qwen-Image-Edit-Lightning-4steps-V1.0.safetensors
+ln -s /kaggle/input/qwen-image-edit-lightning-8steps-v1-0/Qwen-Image-Edit-Lightning-8steps-V1.0.safetensors ./models/loras/Qwen-Image-Edit-Lightning-8steps-V1.0.safetensors
 
 #Flux dev
 ln -s /kaggle/input/flux1-dev-fp8/flux1-dev-fp8.safetensors ./models/diffusion_models/flux1-dev-fp8.safetensors
@@ -208,8 +211,6 @@ ln -s /kaggle/input/svdq-int4-r32-flux-1-kontext-dev/svdq-int4_r32-flux.1-kontex
 # 对于kaggle T4 来说，fp8版本占有内存有点高，有的时候直接崩掉
 ln -s /kaggle/input/qwen-image-edit-2509-fp8-e4m3fn/qwen_image_edit_2509_fp8_e4m3fn.safetensors ./models/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors
 
-ln -s /kaggle/input/qwen-image-lightning-4steps-v2-0-bf16/Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors ./models/loras/Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors
-ln -s /kaggle/input/qwen-image-lightning-8steps-v2-0-bf16/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors ./models/loras/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors
 
 
 
