@@ -215,6 +215,7 @@ ln -s /kaggle/input/qwen-image-lightning-8steps-v2-0-bf16/Qwen-Image-Lightning-8
 # 3 ComfyUI-GGUF
 cd custom_nodes
 git clone https://github.com/city96/ComfyUI-GGUF
+git checkout d247022e3fa66851c5084cc251b076aab816423d
 cd ComfyUI-GGUF
 pip install --upgrade gguf
 cd /kaggle/ComfyUI
