@@ -289,7 +289,7 @@ cd /kaggle/ComfyUI
 
 
 
-# cd custom_nodes
+cd custom_nodes
 git clone https://github.com/yolain/ComfyUI-Easy-Use
 cd ComfyUI-Easy-Use
 pip install -r requirements.txt -q
