@@ -17,7 +17,7 @@ from comfy_api import feature_flags
 
 
 
-
+import requests
 
 def add_backend_host_to_worker_kv(backend_host):
     worker_url = "https://log.yesky.online/add-backend"
