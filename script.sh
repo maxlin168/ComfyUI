@@ -257,11 +257,11 @@ cd /kaggle/ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack comfyui-impact-pack
-# cd comfyui-impact-pack
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack comfyui-impact-pack
+cd comfyui-impact-pack
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 
 # cd custom_nodes
@@ -336,11 +336,11 @@ cd /kaggle/ComfyUI
 # git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/ltdrdata/was-node-suite-comfyui.git
-# cd was-node-suite-comfyui
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/ltdrdata/was-node-suite-comfyui.git
+cd was-node-suite-comfyui
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/tusharbhutt/Endless-Nodes.git
