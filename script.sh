@@ -64,7 +64,7 @@ ln -s /kaggle/input/flux1-dev-fp8/flux1-dev-fp8.safetensors ./models/diffusion_m
 ln -s /kaggle/input/flux1-dev-fp8/flux1-dev-fp8.safetensors ./models/checkpoints/flux1-dev-fp8.safetensors
 
 
-ln -s /kaggle/input/sigclip-vision-patch14-384/sigclip_vision_patch14_384.safetensors -P ./models/clip_vision
+ln -s /kaggle/input/sigclip-vision-patch14-384/sigclip_vision_patch14_384.safetensors ./models/clip_vision/sigclip_vision_patch14_384.safetensors
 
 # https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/blob/main/flux1-redux-dev.safetensors
 mkdir -p ./models/style_models
