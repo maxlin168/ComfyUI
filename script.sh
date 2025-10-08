@@ -12,6 +12,8 @@ ln -s /kaggle/input/moxinv1/MoXinV1.safetensors ./models/loras/MoXinV1.safetenso
 ln -s /kaggle/input/blindbox-v1-mix/blindbox_v1_mix.safetensors ./models/loras/blindbox_v1_mix.safetensors
 ln -s /kaggle/input/dreamshaper-8/dreamshaper_8.safetensors ./models/checkpoints/dreamshaper_8.safetensors
 
+ln -s /kaggle/input/control-v11p-sd15-openpose/control_v11p_sd15_openpose.pth ./models/controlnet/control_v11p_sd15_openpose.pth
+
 #wan t2v
 ln -s /kaggle/input/wan-2-1-vae/wan_2.1_vae.safetensors ./models/vae/wan_2.1_vae.safetensors
 ln -s /kaggle/input/umt5-xxl-fp8-e4m3fn-scaled/umt5_xxl_fp8_e4m3fn_scaled.safetensors ./models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors
@@ -78,6 +80,7 @@ ln -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_m
 #iniverseMixSFWNSFW_ponyRealGuofengV51  dreamshaperXL_lightningDPMSDE
 # wget -c "https://civitai.com/api/download/models/1759168?type=Model&format=SafeTensor&size=full&fp=fp16" -O ./models/checkpoints/Juggernaut-XL-Ragnarok.safetensors
 ln -s /kaggle/input/juggernaut-xl-ragnarok/Juggernaut-XL-Ragnarok.safetensors ./models/checkpoints
+ln -s /kaggle/input/iniversemix/iniverseMix.safetensors ./models/checkpoints/iniverseMix.safetensors
 
 #InstantID
 mkdir -p ./models/instantid
@@ -320,11 +323,14 @@ cd /kaggle/ComfyUI
 # pip install -r requirements.txt -q
 # cd /kaggle/ComfyUI
 
-# cd custom_nodes
-# git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
-# cd comfyui_controlnet_aux
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+# ** Since ComfyUI Core doesn’t come with the corresponding OpenPose image preprocessor, 
+# ** you need to download the preprocessor plugin first
+# ComfyUI's ControlNet Auxiliary Preprocessors
+cd custom_nodes
+git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
+cd comfyui_controlnet_aux
+pip install -r requirements.txt -q
+cd /kaggle/ComfyUI
 
 
 
