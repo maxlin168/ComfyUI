@@ -78,9 +78,11 @@ ln -s /kaggle/input/flux1-redux-dev/flux1-redux-dev.safetensors ./models/style_m
 
 
 #iniverseMixSFWNSFW_ponyRealGuofengV51  dreamshaperXL_lightningDPMSDE
-# wget -c "https://civitai.com/api/download/models/1759168?type=Model&format=SafeTensor&size=full&fp=fp16" -O ./models/checkpoints/Juggernaut-XL-Ragnarok.safetensors
 ln -s /kaggle/input/juggernaut-xl-ragnarok/Juggernaut-XL-Ragnarok.safetensors ./models/checkpoints
 ln -s /kaggle/input/iniversemix/iniverseMix.safetensors ./models/checkpoints/iniverseMix.safetensors
+
+wget 'https://civitai.com/api/download/models/45169?type=Model&format=PickleTensor&size=pruned&fp=fp32' -O ./models/checkpoints/chilloutmix_koreanDoll.safetensors
+ln -s /kaggle/input/chilloutmix/chilloutmix_NiPrunedFp32Fix.safetensors ./models/checkpoints/chilloutmix_NiPrunedFp32Fix.safetensors
 
 #InstantID
 mkdir -p ./models/instantid
