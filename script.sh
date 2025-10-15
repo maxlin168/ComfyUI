@@ -82,7 +82,6 @@ ln -s /kaggle/input/juggernaut-xl-ragnarok/Juggernaut-XL-Ragnarok.safetensors ./
 ln -s /kaggle/input/iniversemix/iniverseMix.safetensors ./models/checkpoints/iniverseMix.safetensors
 
 ln -s /kaggle/input/chilloutmix/chilloutmix_NiPrunedFp32Fix.safetensors ./models/checkpoints/chilloutmix_NiPrunedFp32Fix.safetensors
-ln -s /kaggle/input/chilloutmix-koreandoll/chilloutmix_koreanDoll.safetensors ./models/checkpoints/chilloutmix_koreanDoll.safetensors
 
 #InstantID
 mkdir -p ./models/instantid
