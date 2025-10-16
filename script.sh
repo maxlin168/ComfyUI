@@ -82,6 +82,8 @@ ln -s /kaggle/input/juggernaut-xl-ragnarok/Juggernaut-XL-Ragnarok.safetensors ./
 ln -s /kaggle/input/iniversemix/iniverseMix.safetensors ./models/checkpoints/iniverseMix.safetensors
 
 ln -s /kaggle/input/chilloutmix/chilloutmix_NiPrunedFp32Fix.safetensors ./models/checkpoints/chilloutmix_NiPrunedFp32Fix.safetensors
+wget https://huggingface.co/yesyeahvh/ulzzang-6500/resolve/main/ulzzang-6500.pt -O ./models/embeddings/ulzzang-6500.pt
+wget https://huggingface.co/KatarLegacy/PureErosFace/resolve/main/pureerosface_v1.pt -O ./models/embeddings/pureerosface_v1.pt
 
 #InstantID
 mkdir -p ./models/instantid
