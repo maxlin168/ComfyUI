@@ -198,25 +198,18 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
 cd /kaggle/ComfyUI
 
 # nunchaku_nodes
-cd custom_nodes
-git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
-cd /kaggle/ComfyUI
+# cd custom_nodes
+# git clone https://github.com/mit-han-lab/ComfyUI-nunchaku nunchaku_nodes
+# cd /kaggle/ComfyUI
 
 # 安装 nunchaku : 更新了！！！ 
-pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0/nunchaku-1.0.0+torch2.6-cp311-cp311-linux_x86_64.whl
+# pip install https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.0/nunchaku-1.0.0+torch2.6-cp311-cp311-linux_x86_64.whl
 
 # wget -c https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors -P ./models/diffusion_models
 ln -s /kaggle/input/svdq-int4-r32-flux-1-kontext-dev/svdq-int4_r32-flux.1-kontext-dev.safetensors ./models/diffusion_models/svdq-int4_r32-flux.1-kontext-dev.safetensors
 
-# 有bug, github上issue说nunchaku做的这个：不支持bf16. 先comment掉，待后续再看吧
-# /nunchaku/src/kernels/awq/gemv_awq.cu:254: gemv_awq(Tensor, Tensor, Tensor, Tensor, int, int, int, int)::<lambda()> [with half_t = __nv_bfloat16]: Assertion `isTypeMatch<half_t>(_in_feats.dtype())' failed.
-#wget -c https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509.safetensors -P ./models/diffusion_models
-# ln -s /kaggle/input/svdq-int4-r128-qwen-image-edit-2509/svdq-int4_r128-qwen-image-edit-2509.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image-edit-2509.safetensors
-# ln -s /kaggle/input/svdq-int4-r32-qwen-image-edit-2509/svdq-int4_r32-qwen-image-edit-2509.safetensors ./models/diffusion_models/svdq-int4_r32-qwen-image-edit-2509.safetensors
-
 # 对于kaggle T4 来说，fp8版本占有内存有点高，有的时候直接崩掉
-ln -s /kaggle/input/qwen-image-edit-2509-fp8-e4m3fn/qwen_image_edit_2509_fp8_e4m3fn.safetensors ./models/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors
-
+# ln -s /kaggle/input/qwen-image-edit-2509-fp8-e4m3fn/qwen_image_edit_2509_fp8_e4m3fn.safetensors ./models/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors
 
 
 
