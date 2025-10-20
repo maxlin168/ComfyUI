@@ -54,9 +54,9 @@ import notion
 import uuid
 
 # 生成基于UUID的随机字符串, 以comfy-开头。 在 Cloudflare DNS记录中配置。
-def generate_uuid_string():
+def generate_subname(kaggle_name):
     uuid_part = str(uuid.uuid4()).replace('-', '')
-    return f"comfy{uuid_part}"
+    return f"{kaggle_name}-{uuid_part}"
 
 
 def start_frp():
@@ -77,9 +77,9 @@ def start_frp():
     #     port = random.randint(30001, 59999)
 
     # subprocess.Popen(["sed", "-i", f"s/REMOTE_PORT/{port}/g", "/kaggle/working/frpc.toml"],shell=False)
-
-    uuid_str = generate_uuid_string()
-    subprocess.Popen(["sed", "-i", f"s/REMOTE/{uuid_str}/g", "/kaggle/working/frpc.toml"],shell=False)
+    kaggle_name = args.kaggle_name if args.kaggle_name is not None else "comfy"
+    subname = generate_subname(kaggle_name)
+    subprocess.Popen(["sed", "-i", f"s/REMOTE/{subname}/g", "/kaggle/working/frpc.toml"],shell=False)
 
     subprocess.run(['chmod', '+x', '/kaggle/working/frpc'], check=True)
     time.sleep(3)
@@ -89,10 +89,10 @@ def start_frp():
 
     # notion.add_record_to_notion_database(f"http://117.72.185.137:{port}/")
 
-    notion.add_record_to_notion_database(f"https://{uuid_str}.yesky.online")
+    notion.add_record_to_notion_database(f"https://{subname}.yesky.online")
 
     if args.disable_push_to_worker_kv is None:
-        add_backend_host_to_worker_kv(f"{uuid_str}.yesky.online")
+        add_backend_host_to_worker_kv(f"{subname}.yesky.online")
 
     # notion.add_record_to_notion_database(f"https://k.yesky.online")
     # add_backend_host_to_worker_kv(f"k.yesky.online")
