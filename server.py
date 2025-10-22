@@ -42,6 +42,10 @@ from protocol import BinaryEventTypes
 # Import cache control middleware
 from middleware.cache_middleware import cache_control
 
+import io
+import requests
+from tempfile import SpooledTemporaryFile
+
 async def send_socket_catch_exception(function, message):
     try:
         await function(message)
@@ -325,11 +329,29 @@ class PromptServer():
 
         def image_upload(post, image_save_function=None):
             image = post.get("image")
+            image_url = post.get("image_url")
             overwrite = post.get("overwrite")
             image_is_duplicate = False
 
             image_upload_type = post.get("type")
             upload_dir, image_upload_type = get_dir_by_type(image_upload_type)
+
+            if image_url:
+                try:
+                    response = requests.get(image_url)
+                    response.raise_for_status()
+                    image_data = io.BytesIO(response.content)
+                    filename = os.path.basename(image_url)
+                    if not filename:
+                        filename = "downloaded_image.png" # Default filename if not derivable from URL
+                    # Create a SpooledTemporaryFile to mimic an uploaded file object
+                    temp_file = SpooledTemporaryFile()
+                    temp_file.write(image_data.getvalue())
+                    temp_file.seek(0)
+                    image = type("ImageFile", (object,), {"file": temp_file, "filename": filename})()
+                except requests.exceptions.RequestException as e:
+                    print(f"Error downloading image from URL: {e}")
+                    return web.Response(status=400, text=f"Error downloading image: {e}")
 
             if image and image.file:
                 filename = image.filename
@@ -398,7 +420,6 @@ class PromptServer():
 
                 if output_dir is None:
                     type = original_ref.get("type", "output")
-                    output_dir = folder_paths.get_directory_by_type(type)
 
                 if output_dir is None:
                     return web.Response(status=400)
