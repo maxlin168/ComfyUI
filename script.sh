@@ -158,6 +158,8 @@ ln -s /kaggle/input/qwen-image-q6-k/qwen-image-Q6_K.gguf ./models/diffusion_mode
 ln -s /kaggle/input/qwen-image-edit-2509-q6-k/Qwen-Image-Edit-2509-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-2509-Q6_K.gguf
 ln -s /kaggle/input/qwen-image-edit-q6-k/Qwen_Image_Edit-Q6_K.gguf ./models/diffusion_models/Qwen_Image_Edit-Q6_K.gguf
 
+ln -s /kaggle/input/qwen-image-asianmix-lora/Qwen_Image_AsianMix_Lora.safetensors ./models/loras/Qwen_Image_AsianMix_Lora.safetensors
+
 # ln -s /kaggle/input/svdq-int4-r128-qwen-image/svdq-int4_r128-qwen-image.safetensors ./models/diffusion_models/svdq-int4_r128-qwen-image.safetensors
 # ln -s /kaggle/input/svdq-int4-r128-qwen-image-lightningv1-0-4steps/svdq-int4_r128-qwen-image-lightningv1.0-4steps.safetensors ./models/loras
 
