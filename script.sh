@@ -246,11 +246,11 @@ pip install -r requirements.txt -q
 cd /kaggle/ComfyUI
 
 
-# cd custom_nodes
-# git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git
-# cd ComfyUI-AdvancedLivePortrait
-# pip install -r requirements.txt -q
-# cd /kaggle/ComfyUI
+cd custom_nodes
+git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git
+cd ComfyUI-AdvancedLivePortrait
+pip install -r requirements.txt
+cd /kaggle/ComfyUI
 
 # cd custom_nodes
 # git clone https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
