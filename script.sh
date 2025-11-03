@@ -252,6 +252,12 @@ cd ComfyUI-AdvancedLivePortrait
 pip install -r requirements.txt
 cd /kaggle/ComfyUI
 
+cd custom_nodes
+git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+cd ComfyUI-VideoHelperSuite
+pip install -r requirements.txt
+cd /kaggle/ComfyUI
+
 # cd custom_nodes
 # git clone https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
 # cd ComfyUI-Inspire-Pack
